@@ -1,4 +1,5 @@
 import { Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   return (
@@ -14,8 +15,22 @@ const NavigationBar = () => {
       <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
         <Nav style={{ color: "#515151" }}>
           <Nav.Link href="/">Inicio</Nav.Link>
-          <Nav.Link href="/libro-vuelo">Libro</Nav.Link>
-          <Nav.Link href="/libro-vuelo/agregar-hora">Agregar Hora</Nav.Link>
+          <Nav.Link>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/libro-vuelo/"
+            >
+              Libro
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/libro-vuelo/agregar-hora"
+            >
+              Agregar Hora
+            </Link>
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
