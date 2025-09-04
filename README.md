@@ -30,5 +30,5 @@ Luego de comenzar a registrar tus vuelos puedes ver en el pie de la página prin
 Y si deseas verlas de forma detallada puedes acceder directamente a la sección del libro de vuelo donde te encontrarás con una tabla exactamente igual a la que tienes en formato físico.
 
 <div style="background-color: #fff3cd; padding: 10px; color:black">
-  <strong>⚠️ Advertencia:</strong>Esta app es solo un projecto personal, no suba datos reales
+<strong>⚠️ Advertencia:</strong>Esta app es solo un projecto personal, no suba datos reales
 </div>
