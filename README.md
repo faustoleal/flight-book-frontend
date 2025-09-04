@@ -1,12 +1,34 @@
-# React + Vite
+# Flight Book
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Flight book es una aplicacion para llevar un _registro de las horas de vuelos_ de un piloto.
 
-Currently, two official plugins are available:
+Esta app esta echa con React + Vite, y conectado a un servidor backend(Node + Express) desplegado en Render.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Librerias externas que se usaron:
 
-## Expanding the ESLint configuration
+- React-router-dom
+- redux
+- react-redux
+- react-bootstrap
+- @reduxjs/toolkit
+- @mui/material
+- @mui/icon-material
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Para saber más de su funcionamietno te recomiendo visitar el siguineto repositorio de Github: [flightbook-backend](https://github.com/faustoleal/flight-book-backend)
+
+## Como comenzar a usar Flight Book
+
+Para empezar a usar la app tienes que seguir los siguientes pasos:
+
+1. Registrar un nuevo perfil: deberas poner tu nombre, y crear un nombre de usuario y contraseña.
+2. Una vez creado iniciar sesión para ello necesitaras del usuario y la contraseña(importante no olvidarse niguno de los dos ya que no existe la posibilidad de cambirlos por el momento).
+3. Comienza a llevar el registro de tus horas!!
+
+Una vez dentro podras comenzar a anotar tus horas, para ello te recomiendo leer esta [guía](https://github.com/faustoleal/flight-book-backend) para evitar inconvenientes.
+
+Luego de comenzar a registrar tus vuelos puedes ver en el pie de la página principal el total de tus horas realizadas, en el momento del día que las hiciste(noche, día), las horas de travesía y vuelo local, como piloto al mando, etc.
+Y si deseas verlas de forma detallada puedes acceder directamente a la sección del libro de vuelo donde te encontrarás con una tabla exactamente igual a la que tienes en formato físico.
+
+<div style="background-color: #fff3cd; padding: 10px; color:black">
+  <strong>⚠️ Advertencia:</strong>Esta app es solo un projecto personal, no suba datos reales
+</div>
