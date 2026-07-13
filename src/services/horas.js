@@ -10,7 +10,7 @@ const setToken = (newToken) => {
 
 const getAll = async (id, page) => {
   const response = await axios.get(
-    `${baseUrl}/${id}?limit=15&page=${page - 1}`
+    `${baseUrl}/${id}?limit=15&page=${page - 1}`,
   );
   return response.data;
 };
@@ -20,7 +20,9 @@ const getTotales = async (id) => {
   return response.data;
 };
 
-const create = async (horas) => {
+// Service de crear hora para API hecha con Express.js
+
+const createParaExpress = async (horas) => {
   const config = {
     headers: { Authorization: token },
   };
@@ -28,4 +30,17 @@ const create = async (horas) => {
   return response.data;
 };
 
-export default { getAll, create, setToken, getTotales };
+// Service de create hora para API hecha con Python + FastAPI
+
+const createParaFastAPI = async (horas) => {
+  const response = await axios.post(baseUrl, horas);
+  return response.data;
+};
+
+export default {
+  getAll,
+  createParaExpress,
+  createParaFastAPI,
+  setToken,
+  getTotales,
+};
