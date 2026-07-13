@@ -28,10 +28,11 @@ export const initializeHoras = (page) => {
   };
 };
 
-export const createHoras = (hora) => {
+export const createHoras = (nueva_hora) => {
   return async (dispatch) => {
     try {
-      const newHora = await horasService.create(hora);
+      //const newHora = await horasService.createParaExpress(nueva_hora);
+      const newHora = await horasService.createParaFastAPI(nueva_hora);
       dispatch(setNotification("Hora agregada correctamente", "success"));
       dispatch(appendHoras(newHora));
     } catch (error) {
