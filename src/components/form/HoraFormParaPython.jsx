@@ -8,17 +8,18 @@ import { useEffect, useState } from "react";
 import useString from "../../hooks/useString";
 import useSelect from "../../hooks/useSelect";
 
-const HorasForm = () => {
+const HorasFormParaPython = () => {
   const tiemposInitialState = {
-    localDiaP: "0",
-    localDiaC: "0",
-    localNocheP: "0",
-    localNocheC: "0",
-    travesiaDiaP: "0",
-    travesiaDiaC: "0",
-    travesiaNocheP: "0",
-    travesiaNocheC: "0",
+    local_dia_p: "0",
+    local_dia_c: "0",
+    local_noche_p: "0",
+    local_noche_c: "0",
+    travesia_dia_p: "0",
+    travesia_dia_c: "0",
+    travesia_noche_p: "0",
+    travesia_noche_: "0",
   };
+  const [piloto, SetPiloto] = useState(null);
   const [show, setShow] = useState(false);
 
   const dia = useString("date");
@@ -44,6 +45,8 @@ const HorasForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const loggedPiloto = window.localStorage.getItem("loggedPiloto");
+    SetPiloto(JSON.parse(loggedPiloto));
     if (tiemposDeVuelo && tiempo) {
       setTiempos((prev) => ({
         ...prev,
@@ -57,27 +60,33 @@ const HorasForm = () => {
 
     const newHora = {
       dia: dia.value,
-      horaSalida: horaSalida.value,
+      hora_salida: horaSalida.value,
       desde: desde.value,
       hasta: hasta.value,
-      horaLlegada: horaLlegada.value,
+      hora_llegada: horaLlegada.value,
       finalidad: finalidad.value,
-      avionMatricula: avionMatricula.value,
+      avion_matricula: avionMatricula.value,
       ...Object.fromEntries(
-        Object.entries(tiempos).map(([k, v]) => [k, parseFloat(v)]),
+        Object.entries(tiempos).map(([k, v]) => [k, parseFloat(v).toFixed(1)]),
       ),
       aterrizajes: parseInt(aterrizajes.value),
-      instructorDeVuelo: parseFloat(instructorDeVuelo.value),
+      instructor_de_vuelo: parseFloat(instructorDeVuelo.value),
       reactor: parseFloat(reactor.value),
-      multiMotor: parseFloat(multiMotor.value),
-      turboHelice: parseFloat(turboHelice.value),
+      multi_motor: parseFloat(multiMotor.value),
+      turbo_helice: parseFloat(turboHelice.value),
       aeroaplicador: parseFloat(aeroaplicador.value),
-      instrumentosRealC: parseFloat(instrumentosRealC.value),
-      instrumentosRealP: parseFloat(instrumentosRealP.value),
+      instrumentos_real_p: parseFloat(instrumentosRealC.value),
+      instrumentos_real_c: parseFloat(instrumentosRealP.value),
       capota: parseFloat(capota.value),
     };
 
-    dispatch(createHoras(newHora));
+    const nueva_hora = {
+      nuevaHora: newHora,
+      pilotoId: piloto.id,
+    };
+
+    //dispatch(createHoras(newHora)) Para API con Express.js
+    dispatch(createHoras(nueva_hora)); // Para API con Python + FastAPI
     dia.onReset();
     horaSalida.onReset();
     desde.onReset();
@@ -154,6 +163,7 @@ const HorasForm = () => {
                     <option>Seleccionar avion</option>
                     <option value="LV-CMC">LV-CMC</option>
                     <option value="LV-WHU">LV-WHU</option>
+                    <option value="LV-NUF">LV-NUF</option>
                   </Form.Select>
                   <Button className="avionBtn" onClick={() => setShow(true)}>
                     Agregar Avion
@@ -172,14 +182,16 @@ const HorasForm = () => {
                   onChange={({ target }) => setTiemposDeVuelo(target.value)}
                 >
                   <option>Seleccionar tiempos</option>
-                  <option value="localDiaP">local dia piloto</option>
-                  <option value="localDiaC">local dia copiloto</option>
-                  <option value="localNocheP">local noche piloto</option>
-                  <option value="localNocheC">local noche copiloto</option>
-                  <option value="travesiaDiaP">travesia dia piloto</option>
-                  <option value="travesiaDiaC">travesia dia copiloto</option>
-                  <option value="travesiaNocheP">travesia noche piloto</option>
-                  <option value="travesiaNocheC">
+                  <option value="local_dia_p">local dia piloto</option>
+                  <option value="local_dia_c">local dia copiloto</option>
+                  <option value="local_noche_p">local noche piloto</option>
+                  <option value="local_noche_c">local noche copiloto</option>
+                  <option value="travesia_dia_p">travesia dia piloto</option>
+                  <option value="travesia_dia_c">travesia dia copiloto</option>
+                  <option value="travesia_noche_c">
+                    travesia noche piloto
+                  </option>
+                  <option value="travesia_noche_c">
                     travesia noche copiloto
                   </option>
                 </Form.Select>
@@ -233,4 +245,4 @@ const HorasForm = () => {
   );
 };
 
-export default HorasForm;
+export default HorasFormParaPython;
