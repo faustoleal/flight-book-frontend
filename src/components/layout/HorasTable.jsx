@@ -1,5 +1,6 @@
 import HorasItem from "./HorasItem";
 import { Table } from "react-bootstrap";
+import HorasItemParaPython from "./HorasItemParaPython";
 
 const HorasTable = ({ horas }) => {
   return (
@@ -54,8 +55,11 @@ const HorasTable = ({ horas }) => {
         </tr>
       </thead>
       <tbody>
-        {horas.map((hora) => (
+        {/* {horas.map((hora) => (
           <HorasItem key={hora.id} hora={hora} />
+        ))} */}
+        {horas.map((hora) => (
+          <HorasItemParaPython key={hora.id} hora={hora} />
         ))}
       </tbody>
     </Table>
