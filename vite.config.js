@@ -8,10 +8,13 @@ export default defineConfig({
     proxy: {
       "/api": {
         // Conexion al servidor local
-        target: "http://localhost:3005",
+        //target: "http://localhost:3005",
 
         // Conexion al backend desplegado en Render
         //target: "https://flight-book-backend-sbty.onrender.com/",
+
+        // Conexion al backend desplegado con Python + FastApi + SQLAlchemy
+        target: "http://127.0.0.1:8000/",
         changeOrigin: true,
       },
     },
