@@ -23,7 +23,7 @@ const LibroPage = () => {
     (newPage) => {
       setSearchParams({ limit, page: newPage });
     },
-    [setSearchParams, limit]
+    [setSearchParams, limit],
   );
 
   const dispatch = useDispatch();

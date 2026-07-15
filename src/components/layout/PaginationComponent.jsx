@@ -2,6 +2,7 @@ import { Pagination } from "react-bootstrap";
 import { useMemo } from "react";
 
 const PaginationComponent = ({ handlePageChange, totalPages, currentPage }) => {
+  console.log(totalPages);
   const pages = useMemo(() => {
     let arr = [];
     for (let number = 1; number <= totalPages; number++) {
@@ -12,7 +13,7 @@ const PaginationComponent = ({ handlePageChange, totalPages, currentPage }) => {
           onClick={() => handlePageChange(number)}
         >
           {number}
-        </Pagination.Item>
+        </Pagination.Item>,
       );
     }
     return arr;
